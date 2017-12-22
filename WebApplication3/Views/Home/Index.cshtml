@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Ambientes";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Elige tu espacio</h2>
+        <p>
+            Al elegir una ventana, esta te permitira cargar todos tus productos con sus respectivos vencimientos. Para que no tengas
+            nunca mas que preocuparte por no consumirlos porque estan vencidos o no los encontras en tu hogar.
+        </p>
+    </div><br />
+
+    <div class="page-body">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="navbar-brand text-left" a target="_blank" href="@Url.Action("Living","Home")">Living</a>
+                    <img class="img-responsive pull-right" style=" width:383px; height:344px;" src="~/Images/natural.jpg">
+
+                </div>
+                <div class="col-md-6">
+                    <a class="navbar-brand" a target="_blank" href="@Url.Action("Kitchen","Home")">Cocina</a>
+                    <img class="img-responsive pull-right" style=" width:383px; height:344px;" src="~/Images/erformas-de-cocinas-1.jpg">
+
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="navbar-brand" a target="_blank" href="@Url.Action("Bathroom","Home")">Baño</a>
+                    <img class="img-responsive pull-right" style=" width:383px; height:344px;" src="~/Images/lineas-definidas_ampliacion.jpg">
+
+                </div>
+                <div class="col-md-6">
+                    <a class="navbar-brand" a target="_blank" href="@Url.Action("Bedroom","Home")">Dormitorio</a>
+                    <img class="img-responsive pull-right" style=" width:383px; height:344px;" src="~/Images/dormitorio-matrimonio-suite.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
