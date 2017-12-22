@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PROYECTO.INVERTURModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ambiente">
+    <Key>
+      <PropertyRef Name="AmbienteID" />
+    </Key>
+    <Property Name="AmbienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StockID" Type="int" />
+    <Property Name="Bathroom" Type="varchar" MaxLength="100" />
+    <Property Name="Bedromm" Type="varchar" MaxLength="100" />
+    <Property Name="Kitchen" Type="varchar" MaxLength="100" />
+    <Property Name="Living" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="100" />
+    <Property Name="Contraseña" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="Mail" />
+    </Key>
+    <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre Completo" Type="varchar" MaxLength="100" />
+    <Property Name="Domicilio" Type="varchar" MaxLength="100" />
+    <Property Name="Fecha de Nacimiento" Type="datetime" />
+    <Property Name="Mail" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Tipo de vivienda" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="StockID" />
+    </Key>
+    <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Producto" Type="varchar" MaxLength="100" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Vencimiento" Type="smalldatetime" />
+    <Property Name="Ubicacion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_Ambiente_Stock">
+    <End Role="Stock" Type="Self.Stock" Multiplicity="0..1" />
+    <End Role="Ambiente" Type="Self.Ambiente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stock">
+        <PropertyRef Name="StockID" />
+      </Principal>
+      <Dependent Role="Ambiente">
+        <PropertyRef Name="StockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_People_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="People" Type="Self.People" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="People">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PROYECTOINVERTURModelStoreContainer">
+    <EntitySet Name="Ambiente" EntityType="Self.Ambiente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="People" EntityType="Self.People" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ambiente_Stock" Association="Self.FK_Ambiente_Stock">
+      <End Role="Stock" EntitySet="Stock" />
+      <End Role="Ambiente" EntitySet="Ambiente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_People_Login" Association="Self.FK_People_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="People" EntitySet="People" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

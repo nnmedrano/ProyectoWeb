@@ -47,3 +47,7 @@ c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\obj\Debug\WebApplic
 c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\obj\Debug\WebApplication3.csproj.CoreCompileInputs.cache
 c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\obj\Debug\WebApplication3.dll
 c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\obj\Debug\WebApplication3.pdb
+C:\Users\Nicole\Source\Repos\WebApplication3\WebApplication3\bin\EntityFramework.dll
+C:\Users\Nicole\Source\Repos\WebApplication3\WebApplication3\bin\EntityFramework.SqlServer.dll
+C:\Users\Nicole\Source\Repos\WebApplication3\WebApplication3\bin\EntityFramework.xml
+C:\Users\Nicole\Source\Repos\WebApplication3\WebApplication3\bin\EntityFramework.SqlServer.xml

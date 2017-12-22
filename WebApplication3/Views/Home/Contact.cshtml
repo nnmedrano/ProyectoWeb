@@ -4,7 +4,7 @@
 <h4>@ViewBag.Title</h4>
 <h3>@ViewBag.Message</h3>
 
-<head>
+<div class="page-header">
     <title>Bootstrap 3 with Google Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -22,9 +22,9 @@
             height: 300px
         }
     </style>
-</head>
-<body>
-    <div id="map-container" class="col-md-6"></div>
+</div>
+<div class="panel-body">
+    <div id="map-container" class="col-md-8"></div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -58,16 +58,17 @@
       google.maps.event.addDomListener(window, 'load', init_map);
 
     </script>
-</body>
+</div></br>
 
+<div>
+    <address>
+        Av. Pres. Roque Sáenz Peña 777, <br />
+        C1002 CABA<br />
+        <abbr title="Phone">Telefono</abbr>
+        011 4318-8500
+    </address>
 
-<address>
-    Av. Pres. Roque Sáenz Peña 777, <br />
-    C1002 CABA<br />
-    <abbr title="Phone">P:</abbr>
-    011 4318-8500
-</address>
-
-<address>
-    <strong>Consultas:</strong>   <a href="mailto:Support@example.com">Inventur@hotmail.com</a><br />
-</address>
+    <address>
+        <strong>Consultas:</strong>   <a href="mailto:Support@example.com">Inventur@hotmail.com</a><br />
+    </address>
+</div>

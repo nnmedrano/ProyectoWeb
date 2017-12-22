@@ -11,3 +11,21 @@
         Gracias por elegirnos!
     </p>
 </div>
+
+<div class="container">
+        <h2 class="form-singin-heading">Contacto</h2>
+        <p>Acá nos podés dejar tus comentarios.</p>
+       
+        <form action="@Url.Action("RecibirContacto", "Home")" method="post">
+        
+        <label for="nombre">Nombre: </label>
+            <input name="nombre" type="text" placeholder="Ingrese su nombre aqui" class="form-control"  required autofocus></br>
+        <label for="mail">Mail: </label>
+            <input name="mail" type="email" placeholder="Ingrese su mail aqui" class="form-control" required autofocus></br>
+        <label for="mensaje">Mensaje: </label>
+            <textarea name="mensaje" maxlength="140" class="form-control" required autofocus></textarea>
+</div></br>
+
+<div class="col-md-6">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Enviar</button>
+</div></br>
