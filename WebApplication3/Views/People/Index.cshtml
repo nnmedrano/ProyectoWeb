@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApplication3.Models.Person>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Logout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_Completo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Domicilio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_de_Nacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_de_Vivienda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contraseña)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login.Usuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre_Completo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Domicilio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_de_Nacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo_de_Vivienda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contraseña)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login.Usuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Mail }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Mail }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Mail })
+        </td>
+    </tr>
+}
+
+</table>

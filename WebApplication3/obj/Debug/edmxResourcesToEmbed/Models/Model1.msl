@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="PROYECTOINVERTURModelStoreContainer" CdmEntityContainer="Entities3">
+  <EntityContainerMapping StorageEntityContainer="PROYECTOINVERTURModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="Ambientes">
       <EntityTypeMapping TypeName="PROYECTO.INVERTURModel.Ambiente">
         <MappingFragment StoreEntitySet="Ambiente">
@@ -30,7 +30,8 @@
           <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
           <ScalarProperty Name="Fecha_de_Nacimiento" ColumnName="Fecha de Nacimiento" />
           <ScalarProperty Name="Mail" ColumnName="Mail" />
-          <ScalarProperty Name="Tipo_de_vivienda" ColumnName="Tipo de vivienda" />
+          <ScalarProperty Name="Tipo_de_Vivienda" ColumnName="Tipo de Vivienda" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

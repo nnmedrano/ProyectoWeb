@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebApplication3.Models.Ambiente>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bathroom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bedromm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kitchen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Living)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock.Producto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bathroom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bedromm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kitchen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Living)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock.Producto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AmbienteID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AmbienteID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AmbienteID })
+        </td>
+    </tr>
+}
+
+</table>

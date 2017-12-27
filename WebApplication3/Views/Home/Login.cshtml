@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Iniciar Sesion";
+    Layout = "~/Views/Shared/_Logout.cshtml";
 }
 
 <div class="page-header">
@@ -9,7 +10,7 @@
 <div class="panel-body">
     </div>
     <div class="panel-body">
-        <div class="container">
+        <div class="container col-md-8">
             <h2 class="form-singin-heading">Ingresa a tu cuenta</h2>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></br>
@@ -23,6 +24,10 @@
                     "Recordame"
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sing in</button>
+            <div class="col-md-6">
+                <button class="btn btn-lg btn-primary btn-block" type="submit" href="@Url.Action("Index","Home")">Sing in</button></br>
+                <a class="navbar-brand" href="@Url.Action("Index","Home")">Iniciar Sesion</a>
+                <a class="navbar-brand" href="@Url.Action("Register","Home")">Registrarse</a>
+            </div>
         </div>
     </div></br>

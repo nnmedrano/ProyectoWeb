@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Registrarse";
+    Layout = "~/Views/Shared/_Logout.cshtml";
 }
 
 <div class="page-header">
@@ -10,16 +11,24 @@
     <div class="form-horizontal">
         <h4>Cree una nueva cuenta</h4>
 
-        <div class="container">
+        <div class="container col-md-8">
             <h2 class="form-singin-heading">Registra tu cuenta</h2>
             <label for="inputEmail" class="sr-only">Email</label>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></br>
-            <label for="inputPassword" class="sr-only">Clave</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <label for="inputPassword" class="sr-only">Contraseña</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required></br>
+            <label for="inputText" class="sr-only">Nombre Completo</label>
+            <input type="text" id="inputText" class="form-control" placeholder="Nombre Completo" required></br>
+            <label for="inputText" class="sr-only">Domicilio</label>
+            <input type="text" id="inputText" class="form-control" placeholder="Domicilio" required></br>
+            <label for="inputDate" class="sr-only">Fecha de Nacimiento</label>
+            <input type="date" id="inputText" class="form-control" placeholder="Fecha de Nacimiento" required></br>
+            <label for="inputText" class="sr-only">Tipo de Vivienda</label>
+            <input type="text" id="inputText" class="form-control" placeholder="Tipo de Vivienda" required></br>
         </div>
-    </div></br>
-    <div class="col-md-8">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Registrar</button>
+    </div><br />
+    <div class="col-md-4" padding="20px">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" href="@Url.Action("Login","Home")">Registrar</button>
     </div>
 </div>
 

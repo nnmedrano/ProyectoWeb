@@ -6,115 +6,116 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication3.Models;
 
-namespace WebApplication3.Models
+namespace WebApplication3.Controllers
 {
-    public class AmbientesController : Controller
+    public class PeopleController : Controller
     {
-        private Entities3 db = new Entities3();
+        private Entities db = new Entities();
 
-        // GET: Ambientes
+        // GET: People
         public ActionResult Index()
         {
-            var ambientes = db.Ambientes.Include(a => a.Stock);
-            return View(ambientes.ToList());
+            var people = db.People.Include(p => p.Login);
+            return View(people.ToList());
         }
 
-        // GET: Ambientes/Details/5
-        public ActionResult Details(int? id)
+        // GET: People/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ambiente ambiente = db.Ambientes.Find(id);
-            if (ambiente == null)
+            Person person = db.People.Find(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View(ambiente);
+            return View(person);
         }
 
-        // GET: Ambientes/Create
+        // GET: People/Create
         public ActionResult Create()
         {
-            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto");
+            ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario");
             return View();
         }
 
-        // POST: Ambientes/Create
+        // POST: People/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AmbienteID,StockID,Bathroom,Bedromm,Kitchen,Living")] Ambiente ambiente)
+        public ActionResult Create([Bind(Include = "UsuarioID,Nombre_Completo,Domicilio,Fecha_de_Nacimiento,Mail,Tipo_de_Vivienda,Contraseña")] Person person)
         {
             if (ModelState.IsValid)
             {
-                db.Ambientes.Add(ambiente);
+                db.People.Add(person);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
-            return View(ambiente);
+            ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario", person.UsuarioID);
+            return View(person);
         }
 
-        // GET: Ambientes/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: People/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ambiente ambiente = db.Ambientes.Find(id);
-            if (ambiente == null)
+            Person person = db.People.Find(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
-            return View(ambiente);
+            ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario", person.UsuarioID);
+            return View(person);
         }
 
-        // POST: Ambientes/Edit/5
+        // POST: People/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AmbienteID,StockID,Bathroom,Bedromm,Kitchen,Living")] Ambiente ambiente)
+        public ActionResult Edit([Bind(Include = "UsuarioID,Nombre_Completo,Domicilio,Fecha_de_Nacimiento,Mail,Tipo_de_Vivienda,Contraseña")] Person person)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ambiente).State = EntityState.Modified;
+                db.Entry(person).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
-            return View(ambiente);
+            ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario", person.UsuarioID);
+            return View(person);
         }
 
-        // GET: Ambientes/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: People/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ambiente ambiente = db.Ambientes.Find(id);
-            if (ambiente == null)
+            Person person = db.People.Find(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View(ambiente);
+            return View(person);
         }
 
-        // POST: Ambientes/Delete/5
+        // POST: People/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            Ambiente ambiente = db.Ambientes.Find(id);
-            db.Ambientes.Remove(ambiente);
+            Person person = db.People.Find(id);
+            db.People.Remove(person);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

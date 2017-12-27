@@ -6,115 +6,111 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication3.Models;
 
-namespace WebApplication3.Models
+namespace WebApplication3.Controllers
 {
-    public class PeopleController : Controller
+    public class StocksController : Controller
     {
-        private Entities3 db = new Entities3();
+        private Entities db = new Entities();
 
-        // GET: People
+        // GET: Stocks
         public ActionResult Index()
         {
-            var people = db.People.Include(p => p.Login);
-            return View(people.ToList());
+            return View(db.Stocks.ToList());
         }
 
-        // GET: People/Details/5
-        public ActionResult Details(string id)
+        // GET: Stocks/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Stock stock = db.Stocks.Find(id);
+            if (stock == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(stock);
         }
 
-        // GET: People/Create
+        // GET: Stocks/Create
         public ActionResult Create()
         {
-            ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario");
             return View();
         }
 
-        // POST: People/Create
+        // POST: Stocks/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UsuarioID,Nombre_Completo,Domicilio,Fecha_de_Nacimiento,Mail,Tipo_de_vivienda")] Person person)
+        public ActionResult Create([Bind(Include = "StockID,Producto,Cantidad,Vencimiento,Ubicacion")] Stock stock)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(person);
+                db.Stocks.Add(stock);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario", person.UsuarioID);
-            return View(person);
+            return View(stock);
         }
 
-        // GET: People/Edit/5
-        public ActionResult Edit(string id)
+        // GET: Stocks/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Stock stock = db.Stocks.Find(id);
+            if (stock == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario", person.UsuarioID);
-            return View(person);
+            return View(stock);
         }
 
-        // POST: People/Edit/5
+        // POST: Stocks/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UsuarioID,Nombre_Completo,Domicilio,Fecha_de_Nacimiento,Mail,Tipo_de_vivienda")] Person person)
+        public ActionResult Edit([Bind(Include = "StockID,Producto,Cantidad,Vencimiento,Ubicacion")] Stock stock)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(person).State = EntityState.Modified;
+                db.Entry(stock).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario", person.UsuarioID);
-            return View(person);
+            return View(stock);
         }
 
-        // GET: People/Delete/5
-        public ActionResult Delete(string id)
+        // GET: Stocks/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Stock stock = db.Stocks.Find(id);
+            if (stock == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(stock);
         }
 
-        // POST: People/Delete/5
+        // POST: Stocks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Person person = db.People.Find(id);
-            db.People.Remove(person);
+            Stock stock = db.Stocks.Find(id);
+            db.Stocks.Remove(stock);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

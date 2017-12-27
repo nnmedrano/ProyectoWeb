@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication3.Models;
 
 namespace WebApplication3.Controllers
 {
     public class HomeController : Controller
     {
+        private Entities db = new Entities();
         public ActionResult Index()
         {
             return View();
@@ -32,17 +34,6 @@ namespace WebApplication3.Controllers
         {
             return View();
         }
-
-        public ActionResult Kitchen()
-        {
-            return View();
-        }
-
-        public ActionResult Living()
-        {
-            return View();
-        }
-
         public ActionResult Bathroom()
         {
             return View();
@@ -53,5 +44,14 @@ namespace WebApplication3.Controllers
             return View();
         }
 
+        public ActionResult Kitchen()
+        {
+            return View();
+        }
+
+        public ActionResult Living()
+        {
+            return View();
+        }
     }
 }

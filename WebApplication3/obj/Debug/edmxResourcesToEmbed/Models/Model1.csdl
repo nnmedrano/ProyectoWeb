@@ -25,12 +25,13 @@
     <Key>
       <PropertyRef Name="Mail" />
     </Key>
-    <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioID" Type="Int32" />
     <Property Name="Nombre_Completo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Domicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Fecha_de_Nacimiento" Type="DateTime" Precision="3" />
     <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Tipo_de_vivienda" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_de_Vivienda" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contraseña" Type="Int32" />
     <NavigationProperty Name="Login" Relationship="Self.FK_People_Login" FromRole="People" ToRole="Login" />
   </EntityType>
   <EntityType Name="Stock">
@@ -57,7 +58,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_People_Login">
-    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
     <End Role="People" Type="Self.Person" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Login">
@@ -68,7 +69,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Entities3" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Ambientes" EntityType="Self.Ambiente" />
     <EntitySet Name="Logins" EntityType="Self.Login" />
     <EntitySet Name="People" EntityType="Self.Person" />

@@ -6,12 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication3.Models;
 
-namespace WebApplication3.Models
+namespace WebApplication3.Controllers
 {
     public class LoginsController : Controller
     {
-        private Entities3 db = new Entities3();
+        private Entities db = new Entities();
 
         // GET: Logins
         public ActionResult Index()

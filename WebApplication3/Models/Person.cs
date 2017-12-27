@@ -14,12 +14,13 @@ namespace WebApplication3.Models
     
     public partial class Person
     {
-        public int UsuarioID { get; set; }
+        public Nullable<int> UsuarioID { get; set; }
         public string Nombre_Completo { get; set; }
         public string Domicilio { get; set; }
         public Nullable<System.DateTime> Fecha_de_Nacimiento { get; set; }
         public string Mail { get; set; }
-        public string Tipo_de_vivienda { get; set; }
+        public string Tipo_de_Vivienda { get; set; }
+        public Nullable<int> Contraseña { get; set; }
     
         public virtual Login Login { get; set; }
     }

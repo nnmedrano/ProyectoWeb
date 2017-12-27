@@ -6,125 +6,116 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication3.Models;
 
-namespace WebApplication3.Models
+namespace WebApplication3.Controllers
 {
-    public class StocksController : Controller
+    public class AmbientesController : Controller
     {
-        private Entities3 db = new Entities3();
+        private Entities db = new Entities();
 
-        // GET: Stocks
-        public ActionResult Bathroom()
+        // GET: Ambientes
+        public ActionResult Index()
         {
-            return View(db.Stocks.ToList());
+            var ambientes = db.Ambientes.Include(a => a.Stock);
+            return View(ambientes.ToList());
         }
 
-        public ActionResult Bedroom()
-        {
-            return View(db.Stocks.ToList());
-        }
-
-        public ActionResult Living()
-        {
-            return View(db.Stocks.ToList());
-        }
-
-        public ActionResult Kitchen()
-        {
-            return View(db.Stocks.ToList());
-        }
-
-        // GET: Stocks/Details/5
+        // GET: Ambientes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stock stock = db.Stocks.Find(id);
-            if (stock == null)
+            Ambiente ambiente = db.Ambientes.Find(id);
+            if (ambiente == null)
             {
                 return HttpNotFound();
             }
-            return View(stock);
+            return View(ambiente);
         }
 
-        // GET: Stocks/Create
+        // GET: Ambientes/Create
         public ActionResult Create()
         {
+            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto");
             return View();
         }
 
-        // POST: Stocks/Create
+        // POST: Ambientes/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StockID,Producto,Cantidad,Vencimiento,Ubicacion")] Stock stock)
+        public ActionResult Create([Bind(Include = "AmbienteID,StockID,Bathroom,Bedromm,Kitchen,Living")] Ambiente ambiente)
         {
             if (ModelState.IsValid)
             {
-                db.Stocks.Add(stock);
+                db.Ambientes.Add(ambiente);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(stock);
+            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
+            return View(ambiente);
         }
 
-        // GET: Stocks/Edit/5
+        // GET: Ambientes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stock stock = db.Stocks.Find(id);
-            if (stock == null)
+            Ambiente ambiente = db.Ambientes.Find(id);
+            if (ambiente == null)
             {
                 return HttpNotFound();
             }
-            return View(stock);
+            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
+            return View(ambiente);
         }
 
-        // POST: Stocks/Edit/5
+        // POST: Ambientes/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StockID,Producto,Cantidad,Vencimiento,Ubicacion")] Stock stock)
+        public ActionResult Edit([Bind(Include = "AmbienteID,StockID,Bathroom,Bedromm,Kitchen,Living")] Ambiente ambiente)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(stock).State = EntityState.Modified;
+                db.Entry(ambiente).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(stock);
+            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
+            return View(ambiente);
         }
 
-        // GET: Stocks/Delete/5
+        // GET: Ambientes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stock stock = db.Stocks.Find(id);
-            if (stock == null)
+            Ambiente ambiente = db.Ambientes.Find(id);
+            if (ambiente == null)
             {
                 return HttpNotFound();
             }
-            return View(stock);
+            return View(ambiente);
         }
 
-        // POST: Stocks/Delete/5
+        // POST: Ambientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Stock stock = db.Stocks.Find(id);
-            db.Stocks.Remove(stock);
+            Ambiente ambiente = db.Ambientes.Find(id);
+            db.Ambientes.Remove(ambiente);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

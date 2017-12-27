@@ -43,7 +43,6 @@ c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\bin\es\System.Web.R
 c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\bin\es\System.Web.WebPages.resources.dll
 c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\bin\es\System.Web.WebPages.Deployment.resources.dll
 c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\bin\es\System.Web.WebPages.Razor.resources.dll
-c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\obj\Debug\WebApplication3.csprojResolveAssemblyReference.cache
 c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\obj\Debug\WebApplication3.csproj.CoreCompileInputs.cache
 c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\obj\Debug\WebApplication3.dll
 c:\users\nicole\Source\Repos\WebApplication3\WebApplication3\obj\Debug\WebApplication3.pdb

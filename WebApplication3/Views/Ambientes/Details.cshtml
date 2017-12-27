@@ -1,0 +1,59 @@
+﻿@model WebApplication3.Models.Ambiente
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ambiente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bathroom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bathroom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bedromm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bedromm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kitchen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kitchen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Living)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Living)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock.Producto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock.Producto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AmbienteID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

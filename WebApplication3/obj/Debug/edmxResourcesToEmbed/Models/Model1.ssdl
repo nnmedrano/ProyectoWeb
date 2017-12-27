@@ -23,12 +23,13 @@
     <Key>
       <PropertyRef Name="Mail" />
     </Key>
-    <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioID" Type="int" />
     <Property Name="Nombre Completo" Type="varchar" MaxLength="100" />
     <Property Name="Domicilio" Type="varchar" MaxLength="100" />
     <Property Name="Fecha de Nacimiento" Type="datetime" />
     <Property Name="Mail" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Tipo de vivienda" Type="varchar" MaxLength="100" />
+    <Property Name="Tipo de Vivienda" Type="varchar" MaxLength="100" />
+    <Property Name="Contraseña" Type="int" />
   </EntityType>
   <EntityType Name="Stock">
     <Key>
@@ -53,7 +54,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_People_Login">
-    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
     <End Role="People" Type="Self.People" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Login">
