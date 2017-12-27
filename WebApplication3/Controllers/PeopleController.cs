@@ -59,6 +59,11 @@ namespace WebApplication3.Controllers
 
             ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario", person.UsuarioID);
             return View(person);
+
+            Login newlogin = new Login();
+            newlogin.Usuario = person.Mail;
+            newlogin.Contraseña = person.Contraseña.ToString();
+            //newlogin.Contraseña = person.Contraseña(Convert.ToString(String.Format()); );
         }
 
         // GET: People/Edit/5
