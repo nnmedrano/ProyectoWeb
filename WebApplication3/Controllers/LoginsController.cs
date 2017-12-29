@@ -57,7 +57,7 @@ namespace WebApplication3.Controllers
 
             return View(login);
         }
-
+    
         // GET: Logins/Edit/5
         public ActionResult Edit(int? id)
         {

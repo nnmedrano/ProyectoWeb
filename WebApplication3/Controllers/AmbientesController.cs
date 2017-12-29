@@ -17,8 +17,7 @@ namespace WebApplication3.Controllers
         // GET: Ambientes
         public ActionResult Index()
         {
-            var ambientes = db.Ambientes.Include(a => a.Stock);
-            return View(ambientes.ToList());
+            return View(db.Ambientes.ToList());
         }
 
         // GET: Ambientes/Details/5
@@ -57,7 +56,7 @@ namespace WebApplication3.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
+           // ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
             return View(ambiente);
         }
 
@@ -73,7 +72,7 @@ namespace WebApplication3.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
+          //  ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
             return View(ambiente);
         }
 
@@ -90,7 +89,7 @@ namespace WebApplication3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
+            //ViewBag.StockID = new SelectList(db.Stocks, "StockID", "Producto", ambiente.StockID);
             return View(ambiente);
         }
 

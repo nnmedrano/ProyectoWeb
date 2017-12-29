@@ -269,6 +269,9 @@
     <Content Include="Views\Stocks\Index.cshtml" />
     <Content Include="Views\Shared\_Logout.cshtml" />
     <Content Include="Views\Shared\ViewStart2.cshtml" />
+    <Content Include="Views\Stocks\IndexBA.cshtml" />
+    <Content Include="Views\Stocks\IndexL.cshtml" />
+    <Content Include="Views\Stocks\IndexBE.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

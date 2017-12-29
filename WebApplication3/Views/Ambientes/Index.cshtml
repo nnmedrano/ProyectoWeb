@@ -13,40 +13,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Bathroom)
+            @Html.DisplayNameFor(model => model.Descripcion)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bedromm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kitchen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Living)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock.Producto)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Bathroom)
+            @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bedromm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kitchen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Living)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock.Producto)
-        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AmbienteID }) |
             @Html.ActionLink("Details", "Details", new { id=item.AmbienteID }) |

@@ -10,11 +10,7 @@
             <PropertyRef Name="AmbienteID" />
           </Key>
           <Property Name="AmbienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StockID" Type="int" />
-          <Property Name="Bathroom" Type="varchar" MaxLength="100" />
-          <Property Name="Bedromm" Type="varchar" MaxLength="100" />
-          <Property Name="Kitchen" Type="varchar" MaxLength="100" />
-          <Property Name="Living" Type="varchar" MaxLength="100" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -45,16 +41,17 @@
           <Property Name="Cantidad" Type="int" />
           <Property Name="Vencimiento" Type="smalldatetime" />
           <Property Name="Ubicacion" Type="varchar" MaxLength="100" />
+          <Property Name="AmbienteID" Type="int" />
         </EntityType>
         <Association Name="FK_Ambiente_Stock">
           <End Role="Stock" Type="Self.Stock" Multiplicity="0..1" />
           <End Role="Ambiente" Type="Self.Ambiente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Stock">
-              <PropertyRef Name="StockID" />
+              <PropertyRef Name="AmbienteID" />
             </Principal>
             <Dependent Role="Ambiente">
-              <PropertyRef Name="StockID" />
+              <PropertyRef Name="AmbienteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -94,12 +91,8 @@
             <PropertyRef Name="AmbienteID" />
           </Key>
           <Property Name="AmbienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StockID" Type="Int32" />
-          <Property Name="Bathroom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Bedromm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Kitchen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Living" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Stock" Relationship="Self.FK_Ambiente_Stock" FromRole="Ambiente" ToRole="Stock" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Stock" Relationship="Self.FK_Stock_Ambiente" FromRole="Stock" ToRole="Ambiente" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -120,7 +113,7 @@
           <Property Name="Fecha_de_Nacimiento" Type="DateTime" Precision="3" />
           <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Tipo_de_Vivienda" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Contraseña" Type="Int16" />
+          <Property Name="Contraseña" Type="Int32" />
           <NavigationProperty Name="Login" Relationship="Self.FK_People_Login" FromRole="People" ToRole="Login" />
         </EntityType>
         <EntityType Name="Stock">
@@ -132,17 +125,17 @@
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="Vencimiento" Type="DateTime" Precision="0" />
           <Property Name="Ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ambientes" Relationship="Self.FK_Ambiente_Stock" FromRole="Stock" ToRole="Ambiente" />
+          <NavigationProperty Name="AmbienteID" Relationship="Self.FK_Stock_Ambiente" FromRole="Stock" ToRole="Ambiente" />
         </EntityType>
-        <Association Name="FK_Ambiente_Stock">
+        <Association Name="FK_Stock_Ambiente">
           <End Role="Stock" Type="Self.Stock" Multiplicity="0..1" />
           <End Role="Ambiente" Type="Self.Ambiente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Stock">
-              <PropertyRef Name="StockID" />
+              <PropertyRef Name="AmbienteID" />
             </Principal>
             <Dependent Role="Ambiente">
-              <PropertyRef Name="StockID" />
+              <PropertyRef Name="AmbienteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -163,7 +156,7 @@
           <EntitySet Name="Logins" EntityType="Self.Login" />
           <EntitySet Name="People" EntityType="Self.Person" />
           <EntitySet Name="Stocks" EntityType="Self.Stock" />
-          <AssociationSet Name="FK_Ambiente_Stock" Association="Self.FK_Ambiente_Stock">
+          <AssociationSet Name="FK_Stock_Ambiente" Association="Self.FK_Stock_Ambiente">
             <End Role="Stock" EntitySet="Stocks" />
             <End Role="Ambiente" EntitySet="Ambientes" />
           </AssociationSet>

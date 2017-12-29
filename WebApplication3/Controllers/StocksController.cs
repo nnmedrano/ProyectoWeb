@@ -19,7 +19,19 @@ namespace WebApplication3.Controllers
         {
             return View(db.Stocks.ToList());
         }
-
+        public ActionResult IndexL()
+        {
+            return View(db.Stocks.ToList());
+        }
+        public ActionResult IndexBA()
+        {
+            return View(db.Stocks.Where(S => S.AmbienteID.Descripcion == "Bathroom").ToList());
+            //return View();
+        }
+        public ActionResult IndexBE()
+        {
+            return View(db.Stocks.ToList());
+        }
         // GET: Stocks/Details/5
         public ActionResult Details(int? id)
         {
@@ -59,7 +71,7 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Stocks/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, String origen )
         {
             if (id == null)
             {
@@ -69,6 +81,18 @@ namespace WebApplication3.Controllers
             if (stock == null)
             {
                 return HttpNotFound();
+            }
+            if (origen == "BA")
+            {
+                return View("IndexBA",stock);
+            }
+            if (origen == "BE")
+            {
+                return View("IndexBA", stock);
+            }
+            if (origen == "L")
+            {
+                return View("IndexL", stock);
             }
             return View(stock);
         }
@@ -86,6 +110,7 @@ namespace WebApplication3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+          
             return View(stock);
         }
 

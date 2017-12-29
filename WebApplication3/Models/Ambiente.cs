@@ -15,12 +15,6 @@ namespace WebApplication3.Models
     public partial class Ambiente
     {
         public int AmbienteID { get; set; }
-        public Nullable<int> StockID { get; set; }
-        public string Bathroom { get; set; }
-        public string Bedromm { get; set; }
-        public string Kitchen { get; set; }
-        public string Living { get; set; }
-    
-        public virtual Stock Stock { get; set; }
+        public string Descripcion { get; set; }
     }
 }

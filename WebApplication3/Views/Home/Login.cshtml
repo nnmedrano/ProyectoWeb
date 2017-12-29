@@ -8,25 +8,40 @@
     <title>Login</title>
 </div>
 <div class="panel-body">
-    </div>
-    <div class="panel-body">
-        <div class="container col-md-8">
-            <h2 class="form-singin-heading">Ingresa a tu cuenta</h2>
+</div>
+<div class="panel-body">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <h2 class="form-singin-heading">Ingresa a tu cuenta</h2>
             <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></br>
+            <input type="email" name="mail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input type="password" name="contraseña" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sing in">
+        <a class="navbar-brand" href="@Url.Action("Create", "People")">Registrarse</a>
+
+        @*<div class="container col-md-8">
+            <h2 class="form-singin-heading">Ingresa a tu cuenta</h2>
+            <label for="mail" class="sr-only">Email address</label>
+            <input type="email" name="mail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></br>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="contraseña" id="inputPassword" class="form-control" placeholder="Password" required>
         </div>
-        <div class="col-md-8">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remenber-me">
-                    "Recordame"
-                </label>
-            </div>
-            <div class="col-md-6">
-                <button class="btn btn-lg btn-primary btn-block" type="submit" href="@Url.Action("Index","Home")">Sing in</button></br>
+    <div class="col-md-8">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remenber-me">
+                "Recordame"
+            </label>
+        </div>
+        <div class="col-md-6">
+            <input type="submit" value="Create" class="btn btn-default" href="@Url.Action("Login","Home")" />
                 <a class="navbar-brand" href="@Url.Action("Create", "People")">Registrarse</a>
             </div>
-        </div>
-    </div></br>
+        </div>*@
+    }
+</div></br>

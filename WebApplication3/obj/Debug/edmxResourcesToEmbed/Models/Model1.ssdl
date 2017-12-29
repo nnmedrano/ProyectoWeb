@@ -5,11 +5,7 @@
       <PropertyRef Name="AmbienteID" />
     </Key>
     <Property Name="AmbienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StockID" Type="int" />
-    <Property Name="Bathroom" Type="varchar" MaxLength="100" />
-    <Property Name="Bedromm" Type="varchar" MaxLength="100" />
-    <Property Name="Kitchen" Type="varchar" MaxLength="100" />
-    <Property Name="Living" Type="varchar" MaxLength="100" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Login">
     <Key>
@@ -40,16 +36,17 @@
     <Property Name="Cantidad" Type="int" />
     <Property Name="Vencimiento" Type="smalldatetime" />
     <Property Name="Ubicacion" Type="varchar" MaxLength="100" />
+    <Property Name="AmbienteID" Type="int" />
   </EntityType>
   <Association Name="FK_Ambiente_Stock">
     <End Role="Stock" Type="Self.Stock" Multiplicity="0..1" />
     <End Role="Ambiente" Type="Self.Ambiente" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Stock">
-        <PropertyRef Name="StockID" />
+        <PropertyRef Name="AmbienteID" />
       </Principal>
       <Dependent Role="Ambiente">
-        <PropertyRef Name="StockID" />
+        <PropertyRef Name="AmbienteID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

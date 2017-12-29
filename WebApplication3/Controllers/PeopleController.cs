@@ -50,19 +50,31 @@ namespace WebApplication3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UsuarioID,Nombre_Completo,Domicilio,Fecha_de_Nacimiento,Mail,Tipo_de_Vivienda,Contraseña")] Person person)
         {
-            if (ModelState.IsValid)
-            {
-                db.People.Add(person);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario", person.UsuarioID);
-            return View(person);
 
             Login newlogin = new Login();
             newlogin.Usuario = person.Mail;
             newlogin.Contraseña = person.Contraseña.ToString();
+
+            Person newPerson = new Person();
+            newPerson.Contraseña =person.Contraseña;
+            newPerson.Mail = person.Mail;
+
+            db.People.Add(person);
+            db.SaveChanges();
+
+            /*if (ModelState.IsValid)
+            {
+                var contraseña = person.Contraseña;
+
+                db.People.Add(person);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }*/
+
+            //ViewBag.UsuarioID = new SelectList(db.Logins, "UsuarioID", "Usuario", person.UsuarioID);
+            return Redirect("/Home/Login");
+
+            
             //newlogin.Contraseña = person.Contraseña(Convert.ToString(String.Format()); );
         }
 

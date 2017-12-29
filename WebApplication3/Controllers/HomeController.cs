@@ -30,9 +30,21 @@ namespace WebApplication3.Controllers
             return View();
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string mail, Nullable<Int32> contraseña)
         {
-            return View();
+            if(mail == null && contraseña == null)
+                return View();
+
+            Person person = db.People.Where(p => p.Mail == mail).Where(p2 => p2.Contraseña == contraseña).Select(p => p).FirstOrDefault();
+
+            if (person != null)
+            {
+                return View("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
         public ActionResult Bathroom()
         {

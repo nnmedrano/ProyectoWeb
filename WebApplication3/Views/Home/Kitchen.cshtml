@@ -1,6 +1,11 @@
-﻿@{
-    ViewBag.Title = "Kitchen";
+﻿
+@model IEnumerable<WebApplication3.Models.Stock>
+
+@{
+            ViewBag.Title = "Kitchen";
+            Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    
 
 <!DOCTYPE html>
 
@@ -11,11 +16,10 @@
 </head>
 <body>
     <div>
-
         <h1>Organizando tu Cocina</h1>
         <p>Coloca tus productos comestibles</p>
 
-        <table>
+ @* <table>
 
             <tr>
                 <td>Producto</td>
@@ -50,7 +54,7 @@
         </table> 
     </div></br>
     <div>
-        @Html.ActionLink("Lista de productos", "Kitchen", "Home")<br />
-    </div>
+        @Html.ActionLink("Lista de productos", "Stock", "")<br />
+    </div>*@
 </body>
 </html>
